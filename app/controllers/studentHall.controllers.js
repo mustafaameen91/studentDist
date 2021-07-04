@@ -1,4 +1,4 @@
-const StudentHalls = require("../models/studentHall.models");
+const StudentHalls = require("../models/studenthall.models");
 
 require("dotenv").config();
 
@@ -38,11 +38,11 @@ exports.findOne = (req, res) => {
       if (err) {
          if (err.kind === "not_found") {
             res.status(404).send({
-               message: `Not found studentHall with id ${req.params.id}.`,
+               message: `Not found studenthall with id ${req.params.id}.`,
             });
          } else {
             res.status(500).send({
-               message: "Error retrieving studentHall with id " + req.params.id,
+               message: "Error retrieving studenthall with id " + req.params.id,
             });
          }
       } else res.send(data);
@@ -68,7 +68,7 @@ exports.update = (req, res) => {
             } else {
                res.status(500).send({
                   message:
-                     "Error updating studentHall with id " + req.params.id,
+                     "Error updating studenthall with id " + req.params.id,
                });
             }
          } else res.send(data);
@@ -81,14 +81,14 @@ exports.delete = (req, res) => {
       if (err) {
          if (err.kind === "not_found") {
             res.status(404).send({
-               message: `Not found studentHall with id ${req.params.id}.`,
+               message: `Not found studenthall with id ${req.params.id}.`,
             });
          } else {
             res.status(500).send({
-               message: "Could not delete studentHall with id " + req.params.id,
+               message: "Could not delete studenthall with id " + req.params.id,
             });
          }
-      } else res.send({ message: `StudentHall was deleted successfully!` });
+      } else res.send({ message: `studenthall was deleted successfully!` });
    });
 };
 
@@ -98,7 +98,7 @@ exports.findAll = (req, res) => {
          res.status(500).send({
             message:
                err.message ||
-               "Some error occurred while retrieving studentHall.",
+               "Some error occurred while retrieving studenthall.",
          });
       else res.send(data);
    });
@@ -128,16 +128,16 @@ exports.getStudentHallByFilter = (req, res) => {
    var collegeNumber = req.query.collegeNumber;
 
    let sqlQuery =
-      "SELECT * FROM studentHall JOIN halls JOIN `groups` ON halls.idHall = studentHall.hallId AND `groups`.idGroup = studentHall.groupId WHERE 1=1";
+      "SELECT * FROM studenthall JOIN halls JOIN `groups` ON halls.idHall = studenthall.hallId AND `groups`.idGroup = studenthall.groupId WHERE 1=1";
 
    if (collegeNumber) {
-      sqlQuery += ` AND studentHall.collegeNumber = ${collegeNumber} `;
+      sqlQuery += ` AND studenthall.collegeNumber = ${collegeNumber} `;
    }
    if (hallId) {
-      sqlQuery += ` AND studentHall.hallId = ${hallId} `;
+      sqlQuery += ` AND studenthall.hallId = ${hallId} `;
    }
    if (groupId) {
-      sqlQuery += ` AND studentHall.groupId = ${groupId} `;
+      sqlQuery += ` AND studenthall.groupId = ${groupId} `;
    }
 
    console.log(sqlQuery);
