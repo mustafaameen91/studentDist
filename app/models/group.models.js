@@ -35,7 +35,7 @@ Group.findById = (idGroup, result) => {
 };
 
 Group.getAll = (result) => {
-   conn.query(`SELECT * FROM groups `, (err, res) => {
+   conn.query("SELECT * FROM `groups`", (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
