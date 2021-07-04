@@ -18,9 +18,9 @@ exports.connection = connection;
 
 const connectionTwo = mysql.createConnection({
    host: "localhost",
-   user: "root",
+   user: "devone",
    password: "",
-   database: "portal",
+   database: "uni_Dijla_87601",
    // port: dbConfig.PORT
 });
 
