@@ -51,7 +51,7 @@ Halls.getAll = (result) => {
 
 Halls.getStatistics = (result) => {
    conn.query(
-      `SELECT COUNT(*) AS hallsLength , (SELECT COUNT(*) FROM studenthall)  AS studentHallLength , (SELECT COUNT(*) FROM groups) AS groupsLength FROM halls`,
+      "SELECT COUNT(*) AS hallsLength , (SELECT COUNT(*) FROM studenthall)  AS studentHallLength , (SELECT COUNT(*) FROM `groups`) AS groupsLength FROM halls",
       (err, res) => {
          if (err) {
             console.log("error: ", err);

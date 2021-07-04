@@ -18,20 +18,23 @@ Group.create = (newGroup, result) => {
 };
 
 Group.findById = (idGroup, result) => {
-   conn.query(`SELECT * FROM groups WHERE idGroup = ${idGroup}`, (err, res) => {
-      if (err) {
-         console.log("error: ", err);
-         result(err, null);
-         return;
-      }
-      if (res.length) {
-         console.log("found class: ", res[0]);
-         result(null, res[0]);
-         return;
-      }
+   conn.query(
+      "SELECT * FROM `groups` WHERE idGroup = " + idGroup,
+      (err, res) => {
+         if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+         }
+         if (res.length) {
+            console.log("found class: ", res[0]);
+            result(null, res[0]);
+            return;
+         }
 
-      result({ kind: "not_found" }, null);
-   });
+         result({ kind: "not_found" }, null);
+      }
+   );
 };
 
 Group.getAll = (result) => {
@@ -49,7 +52,7 @@ Group.getAll = (result) => {
 
 Group.updatedById = (idGroup, Group, result) => {
    conn.query(
-      "UPDATE groups SET  ? WHERE idGroup = ?",
+      "UPDATE `groups` SET  ? WHERE idGroup = ?",
       [Group, idGroup],
       (err, res) => {
          if (err) {
@@ -70,7 +73,7 @@ Group.updatedById = (idGroup, Group, result) => {
 };
 
 Group.delete = (idGroup, result) => {
-   conn.query(`DELETE FROM groups WHERE idGroup = ${idGroup}`, (err, res) => {
+   conn.query("DELETE FROM `groups` WHERE idGroup =" + idGroup, (err, res) => {
       if (err) {
          // console.log("error: ", err);
          result(null, err);
