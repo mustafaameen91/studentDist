@@ -128,7 +128,7 @@ exports.getStudentHallByFilter = (req, res) => {
    var collegeNumber = req.query.collegeNumber;
 
    let sqlQuery =
-      "SELECT * FROM studentHall JOIN halls JOIN groups ON halls.idHall = studentHall.hallId AND groups.idGroup = studentHall.groupId WHERE 1=1";
+      "SELECT * FROM studentHall JOIN halls JOIN `groups` ON halls.idHall = studentHall.hallId AND `groups`.idGroup = studentHall.groupId WHERE 1=1";
 
    if (collegeNumber) {
       sqlQuery += ` AND studentHall.collegeNumber = ${collegeNumber} `;
