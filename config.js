@@ -4,8 +4,8 @@ const mysql = require("mysql");
 const connection = mysql.createConnection({
    host: "localhost",
    user: "devone",
-   password: "",
-   database: "uni_Dijla_87601",
+   password: "uni_Dijla_87601",
+   database: "studentDist",
    // port: dbConfig.PORT,
 });
 
@@ -19,8 +19,8 @@ exports.connection = connection;
 const connectionTwo = mysql.createConnection({
    host: "localhost",
    user: "devone",
-   password: "",
-   database: "uni_Dijla_87601",
+   password: "uni_Dijla_87601",
+   database: "portal",
    // port: dbConfig.PORT
 });
 
