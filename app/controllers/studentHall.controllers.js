@@ -1,4 +1,4 @@
-const StudentHalls = require("../models/studenthall.models");
+const StudentHalls = require("../models/studentHall.models");
 
 require("dotenv").config();
 
