@@ -13,7 +13,7 @@ const StudentHalls = function (studentHalls) {
 };
 
 StudentHalls.create = (newStudentHalls, result) => {
-   conn.query("INSERT INTO studenthall SET ?", newStudentHalls, (err, res) => {
+   conn.query("INSERT INTO studentHall SET ?", newStudentHalls, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(err, null);
@@ -30,7 +30,7 @@ StudentHalls.create = (newStudentHalls, result) => {
 
 StudentHalls.findById = (idStudentHall, result) => {
    conn.query(
-      `SELECT * FROM studenthall WHERE idStudentHall = ${idStudentHall}`,
+      `SELECT * FROM studentHall WHERE idStudentHall = ${idStudentHall}`,
       (err, res) => {
          if (err) {
             console.log("error: ", err);
@@ -49,7 +49,7 @@ StudentHalls.findById = (idStudentHall, result) => {
 };
 
 StudentHalls.getAll = (result) => {
-   conn.query(`SELECT * FROM studenthall`, (err, res) => {
+   conn.query(`SELECT * FROM studentHall`, (err, res) => {
       if (err) {
          console.log("error: ", err);
          result(null, err);
@@ -62,7 +62,7 @@ StudentHalls.getAll = (result) => {
 
 StudentHalls.updatedById = (idStudentHall, studentHalls, result) => {
    conn.query(
-      "UPDATE studenthall SET  ? WHERE idStudentHall = ?",
+      "UPDATE studentHall SET  ? WHERE idStudentHall = ?",
       [studentHalls, idStudentHall],
       (err, res) => {
          if (err) {
@@ -100,7 +100,7 @@ StudentHalls.delete = (idStudentHall, result) => {
             return;
          }
 
-         console.log("deleted studenthall with idStudentHall: ");
+         console.log("deleted studentHall with idStudentHall: ");
          result(null, res);
       }
    );
@@ -109,7 +109,7 @@ StudentHalls.delete = (idStudentHall, result) => {
 StudentHalls.findByIds = (idStudentHall, result) => {
    if (idStudentHall != null) {
       conn.query(
-         `SELECT * FROM studenthall WHERE idStudentHall = ${idStudentHall}`,
+         `SELECT * FROM studentHall WHERE idStudentHall = ${idStudentHall}`,
          (err, res) => {
             if (err) {
                console.log("error: ", err);
@@ -133,7 +133,7 @@ StudentHalls.createMultiStudents = (studentHalls, result) => {
       let groupId = studentHalls[0].groupId;
 
       conn.query(
-         `SELECT studenthall.groupId FROM studenthall WHERE groupId = ${groupId}`,
+         `SELECT studentHall.groupId FROM studentHall WHERE groupId = ${groupId}`,
          (err, res) => {
             console.log(res[0]);
 
@@ -155,17 +155,17 @@ StudentHalls.createMultiStudents = (studentHalls, result) => {
             conn.query(
                "INSERT INTO studenthall (hallId , groupId,collegeNumber, C , R , distribute,sectionId,sectionName,level,studentName) VALUES ?",
                [
-                  studentHalls.map((studenthall) => [
-                     studenthall.hallId,
-                     studenthall.groupId,
-                     studenthall.collegeNumber,
-                     studenthall.C,
-                     studenthall.R,
-                     studenthall.distribute,
-                     studenthall.sectionId,
-                     studenthall.sectionName,
-                     studenthall.level,
-                     studenthall.studentName,
+                  studentHalls.map((studentHall) => [
+                     studentHall.hallId,
+                     studentHall.groupId,
+                     studentHall.collegeNumber,
+                     studentHall.C,
+                     studentHall.R,
+                     studentHall.distribute,
+                     studentHall.sectionId,
+                     studentHall.sectionName,
+                     studentHall.level,
+                     studentHall.studentName,
                   ]),
                ],
                (err, res) => {
