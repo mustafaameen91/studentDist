@@ -90,4 +90,38 @@ Group.delete = (idGroup, result) => {
    });
 };
 
+Group.deleteWithStudentHall = (idGroup, result) => {
+   conn.query(
+      "DELETE FROM `studenthall` WHERE groupId =" + idGroup,
+      (err, res) => {
+         if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+         }
+
+         if (res.affectedRows == 0 || res.effectedRows > 0) {
+            conn.query(
+               "DELETE FROM `groups` WHERE idGroup =" + idGroup,
+               (err, res) => {
+                  if (err) {
+                     // console.log("error: ", err);
+                     result(null, err);
+                     return;
+                  }
+
+                  if (res.affectedRows == 0) {
+                     result({ kind: "not_found" }, null);
+                     return;
+                  }
+
+                  console.log("deleted group with id: ", idGroup);
+                  result(null, res);
+               }
+            );
+         }
+      }
+   );
+};
+
 module.exports = Group;

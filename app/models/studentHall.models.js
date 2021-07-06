@@ -106,26 +106,24 @@ StudentHalls.delete = (idStudentHall, result) => {
    );
 };
 
-StudentHalls.findByIds = (idStudentHall, result) => {
-   if (idStudentHall != null) {
-      conn.query(
-         `SELECT * FROM studenthall WHERE idStudentHall = ${idStudentHall}`,
-         (err, res) => {
-            if (err) {
-               console.log("error: ", err);
-               result(err, null);
-               return;
-            }
-            if (res.length) {
-               console.log("found student: ", res[0]);
-               result(null, res[0]);
-               return;
-            }
-
-            result({ kind: "not_found" }, null);
+StudentHalls.findForStats = (groupId, result) => {
+   conn.query(
+      `SELECT * , COUNT(*) AS total FROM studenthall WHERE groupId = ${groupId} GROUP BY sectionId , level `,
+      (err, res) => {
+         if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
          }
-      );
-   }
+         if (res.length) {
+            console.log("found student: ", res);
+            result(null, res);
+            return;
+         }
+
+         result({ kind: "not_found" }, null);
+      }
+   );
 };
 
 StudentHalls.createMultiStudents = (studentHalls, result) => {

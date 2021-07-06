@@ -65,7 +65,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-   Group.delete(req.params.idGroup, (err, data) => {
+   Group.deleteWithStudentHall(req.params.idGroup, (err, data) => {
       if (err) {
          if (err.kind === "not_found") {
             res.status(404).send({
