@@ -70,7 +70,7 @@ Halls.updatedById = (idHall, Halls, result) => {
       "UPDATE halls SET  ? WHERE idHall = ?",
       [Halls, idHall],
       (err, res) => {
-         if (err.errno == 1062) {
+         if (err?.errno == 1062) {
             result({ kind: "duplicate" }, null);
             return;
          }
