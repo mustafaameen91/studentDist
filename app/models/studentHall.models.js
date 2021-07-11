@@ -177,20 +177,23 @@ StudentHalls.createMultiStudents = (studentHalls, result) => {
 };
 
 StudentHalls.findByFilters = (sqlQuery, result) => {
-   conn.query(`${sqlQuery}`, (err, res) => {
-      if (err) {
-         console.log("error: ", err);
-         result(err, null);
-         return;
-      }
-      if (res.length) {
-         console.log("found image: ", res);
-         result(null, res);
-         return;
-      }
+   conn.query(
+      `SELECT * FROM studenthall JOIN halls JOIN \`groups\` ON halls.idHall = studenthall.hallId AND \`groups\`.idGroup = studenthall.groupId WHERE 1=1 ${sqlQuery} ORDER BY halls.hallNumber ASC`,
+      (err, res) => {
+         if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+         }
+         if (res.length) {
+            console.log("found image: ", res);
+            result(null, res);
+            return;
+         }
 
-      result({ kind: "not_found" }, null);
-   });
+         result({ kind: "not_found" }, null);
+      }
+   );
 };
 
 module.exports = StudentHalls;

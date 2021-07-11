@@ -3,6 +3,8 @@ const mysql = require("mysql");
 
 const connection = mysql.createConnection({
    host: "localhost",
+   // user: "root",
+   // password: "",
    user: "devone",
    password: "uni_Dijla_87601",
    database: "studentDist",
@@ -20,6 +22,8 @@ const connectionTwo = mysql.createConnection({
    host: "localhost",
    user: "devone",
    password: "uni_Dijla_87601",
+   // user: "root",
+   // password: "",
    database: "portal",
    // port: dbConfig.PORT
 });
