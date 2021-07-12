@@ -4,7 +4,7 @@ module.exports = (app) => {
 
    app.post(`/api/addHall`, auth, halls.create);
 
-   app.get(`/api/halls`, auth, halls.findAll);
+   app.get(`/api/halls`, halls.findAll);
 
    app.get(`/api/statistics`, auth, halls.findStatistics);
 
