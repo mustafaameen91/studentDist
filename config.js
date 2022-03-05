@@ -3,10 +3,10 @@ const mysql = require("mysql");
 
 const connection = mysql.createConnection({
    host: "localhost",
-   user: "root",
-   password: "root",
-   // user: "devone",
-   // password: "uni_Dijla_87601",
+   // user: "root",
+   // password: "root",
+   user: "devone",
+   password: "uni_Dijla_87601",
    database: "studentDist",
    port: 8889,
 });
@@ -20,11 +20,12 @@ exports.connection = connection;
 
 const connectionTwo = mysql.createConnection({
    host: "localhost",
-   // user: "devone",
-   // password: "uni_Dijla_87601",
-   user: "root",
-   password: "root",
-   database: "portal",
+   user: "devone",
+   password: "uni_Dijla_87601",
+   // user: "root",
+   // password: "root",
+   // database: "portal",
+   database: "studentPortal",
    port: 8889,
 });
 
