@@ -5,8 +5,10 @@ const connection = mysql.createConnection({
    host: "localhost",
    // user: "root",
    // password: "root",
-   user: "devone",
-   password: "uni_Dijla_87601",
+   // user: "devone",
+   // password: "uni_Dijla_87601",
+   user: "duc",
+   password: "DucDuc123123!@",
    database: "studentDist",
    port: 8889,
 });
@@ -20,8 +22,10 @@ exports.connection = connection;
 
 const connectionTwo = mysql.createConnection({
    host: "localhost",
-   user: "devone",
-   password: "uni_Dijla_87601",
+   // user: "devone",
+   // password: "uni_Dijla_87601",
+   user: "duc",
+   password: "DucDuc123123!@",
    // user: "root",
    // password: "root",
    // database: "portal",
