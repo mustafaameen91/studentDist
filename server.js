@@ -12,6 +12,7 @@ require("./app/routers/studentHall.routes.js")(app);
 require("./app/routers/teacherHalls.routes.js")(app);
 require("./app/routers/user.routes.js")(app);
 require("./app/routers/group.routes.js")(app);
+require("./app/routers/student.routes.js")(app);
 
 app.listen(5510, () => {
    console.log("Server is running on port 5510");

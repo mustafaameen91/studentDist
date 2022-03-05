@@ -149,7 +149,7 @@ StudentHalls.createMultiStudents = (studentHalls, result) => {
                result(res.status(700), null);
                return;
             }
-
+            console.log(studentHalls[0]);
             conn.query(
                "INSERT INTO studenthall (hallId , groupId,collegeNumber, C , R , distribute,sectionId,sectionName,level,studentName) VALUES ?",
                [
@@ -166,9 +166,14 @@ StudentHalls.createMultiStudents = (studentHalls, result) => {
                      studenthall.studentName,
                   ]),
                ],
-               (err, res) => {
+               (err, res2) => {
+                  if (err) {
+                     console.log("error: ", err);
+                     result(err, null);
+                     return;
+                  }
                   console.log("created new studentHalls: ");
-                  result(null, res);
+                  result(null, res2);
                }
             );
          }
