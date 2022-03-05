@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
    user: "duc",
    password: "DucDuc123123!@",
    database: "studentDist",
-   port: 8889,
+   // port: 8889,
 });
 
 connection.connect((error) => {
@@ -30,7 +30,7 @@ const connectionTwo = mysql.createConnection({
    // password: "root",
    // database: "portal",
    database: "studentPortal",
-   port: 8889,
+   // port: 8889,
 });
 
 connectionTwo.connect((error) => {
